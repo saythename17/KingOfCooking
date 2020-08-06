@@ -42,14 +42,27 @@
             android:layout_alignLeft="@id/home_recycler_title"/>
         <ImageView
             android:id="@+id/home_image"
-            android:padding="8dp"
-            android:paddingBottom="8dp"
+            android:paddingHorizontal="8dp"
             android:layout_width="match_parent"
             android:layout_height="240dp"
             android:layout_marginTop="10dp"
             android:layout_below="@id/home_recycler_name"
             android:src="@drawable/food"
             android:scaleType="centerCrop"/>
+        <TextView
+            android:id="@+id/newRecipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_orange_light"
+            android:text="Best!"
+            android:elevation="8dp"
+            android:textColor="@android:color/tertiary_text_dark"
+            android:textStyle="bold"
+            android:fontFamily="monospace"
+            android:layout_alignBottom="@id/home_image"
+            android:layout_marginLeft="8dp"
+            android:padding="4dp"
+            android:visibility="gone"/>
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

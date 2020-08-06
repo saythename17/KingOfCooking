@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".WriteActivity"></activity>
+        <activity android:name=".my.WriteActivity"></activity>
         <activity android:name=".IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RecipeDetail" />
+        <activity android:name=".recipe.RecipeDetail" />
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTask"

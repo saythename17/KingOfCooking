@@ -1,4 +1,4 @@
-package com.icandothisallday2020.kingofcooking;
+package com.icandothisallday2020.kingofcooking.my;
 
 public class WriteItem {
     String title,recipe,date,file;

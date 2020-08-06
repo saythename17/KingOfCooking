@@ -19,7 +19,7 @@
                 android:id="@+id/view_pager"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="9"/>
+                android:layout_weight="9.9"/>
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottom_nav"
                 android:layout_width="match_parent"
@@ -36,6 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"/>
+
 
 
 

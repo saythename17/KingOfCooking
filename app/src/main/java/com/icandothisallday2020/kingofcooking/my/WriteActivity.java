@@ -1,4 +1,4 @@
-package com.icandothisallday2020.kingofcooking;
+package com.icandothisallday2020.kingofcooking.my;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -9,7 +9,6 @@ import androidx.loader.content.CursorLoader;
 
 import android.Manifest;
 import android.content.Intent;
-import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -26,9 +25,11 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.snackbar.Snackbar;
+import com.icandothisallday2020.kingofcooking.R;
+import com.icandothisallday2020.kingofcooking.RetrofitHelper;
+import com.icandothisallday2020.kingofcooking.RetrofitService;
 
 import java.io.File;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -42,8 +43,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class WriteActivity extends AppCompatActivity {
     ImageView camera, iv;
@@ -177,7 +176,7 @@ public class WriteActivity extends AppCompatActivity {
 //        RetrofitService retrofitService=retrofit.create(RetrofitService.class);
 //        Call<String> call=retrofitService.postDataWithFile(dataPart,filePart);
 //
-        Retrofit retrofit=RetrofitHelper.getInstanceFromScalars();
+        Retrofit retrofit= RetrofitHelper.getInstanceFromScalars();
         RetrofitService service=retrofit.create(RetrofitService.class);
         Map<String,String> dataPart=new HashMap<>();
         dataPart.put("title",title);

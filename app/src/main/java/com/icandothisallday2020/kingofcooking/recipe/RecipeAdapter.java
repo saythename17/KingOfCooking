@@ -1,4 +1,4 @@
-package com.icandothisallday2020.kingofcooking;
+package com.icandothisallday2020.kingofcooking.recipe;
 
 import android.app.Activity;
 import android.app.ActivityOptions;
@@ -15,13 +15,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.icandothisallday2020.kingofcooking.R;
+
 import java.util.ArrayList;
 
 public class RecipeAdapter extends RecyclerView.Adapter {
     Context context;
-    ArrayList<HF_Item> items;
+    ArrayList<RecipeItem> items;
 
-    public RecipeAdapter(Context context, ArrayList<HF_Item> items) {
+    public RecipeAdapter(Context context, ArrayList<RecipeItem> items) {
         this.context = context;
         this.items = items;
     }
@@ -30,7 +33,7 @@ public class RecipeAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater=LayoutInflater.from(context);
-        View view=inflater.inflate(R.layout.home_recycler_item,parent,false);
+        View view=inflater.inflate(R.layout.recycler_recipe,parent,false);
         VH holder=new VH(view);
         return holder;
     }
@@ -38,10 +41,10 @@ public class RecipeAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         VH vh=(VH)holder;
-        HF_Item item=items.get(position);
+        RecipeItem item=items.get(position);
         vh.title.setText(item.title);
         vh.name.setText(item.name);
-        vh.image.setImageResource(item.image);
+        Glide.with(context).load(item.image).into(vh.image);
     }
 
     @Override
@@ -61,10 +64,10 @@ public class RecipeAdapter extends RecyclerView.Adapter {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    HF_Item hf= items.get(getLayoutPosition());
+                    RecipeItem item= items.get(getLayoutPosition());
                     Intent intent=new Intent(context, RecipeDetail.class);
-                    intent.putExtra("title",hf.name);
-                    intent.putExtra("img",hf.image);
+                    intent.putExtra("title",item.name);
+                    intent.putExtra("img",item.image);
 
                     if(Build.VERSION.SDK_INT<21) context.startActivity(intent);
                     else{

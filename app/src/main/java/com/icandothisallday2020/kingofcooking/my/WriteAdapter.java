@@ -1,4 +1,4 @@
-package com.icandothisallday2020.kingofcooking;
+package com.icandothisallday2020.kingofcooking.my;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -18,6 +18,7 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.icandothisallday2020.kingofcooking.R;
 
 import java.util.ArrayList;
 

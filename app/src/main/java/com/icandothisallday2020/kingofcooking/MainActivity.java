@@ -20,14 +20,13 @@ import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     DrawerLayout drawer;
     ViewPager pager;
-    MyAdapter adapter;
+    MainAdapter adapter;
     BottomNavigationView bnv;
 
     boolean musicOn=true;
@@ -45,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         drawer=findViewById(R.id.drawer);
 
         pager=findViewById(R.id.view_pager);
-        adapter=new MyAdapter(getSupportFragmentManager());
+        adapter=new MainAdapter(getSupportFragmentManager());
         pager.setAdapter(adapter);
 
         bnv=findViewById(R.id.bottom_nav);
@@ -63,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.find:
                         pager.setCurrentItem(2);
                         break;
-                    case R.id.talk:
+                    case R.id.my:
                         pager.setCurrentItem(3);
                         break;
                 }
@@ -78,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 // positionOffset(비율),positionOffsetPixels(픽셀단위):스크롤한 정도를 알려줌
             }
 
-            int[] bnvIcon= new int[]{R.id.home, R.id.recipe, R.id.find, R.id.talk};
+            int[] bnvIcon= new int[]{R.id.home, R.id.recipe, R.id.find, R.id.my};
 
             @Override
             public void onPageSelected(int position) {//스크롤한 페이지가 80%를 넘었을때 기준
