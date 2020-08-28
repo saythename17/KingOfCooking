@@ -24,7 +24,7 @@
 
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
-        android:id="@+id/multiple_actions"
+        android:id="@+id/fab_my"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -35,7 +35,7 @@
         fab:fab_labelStyle="@style/AppTheme">
 
         <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/write"
+            android:id="@+id/talk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_fab_talk_final"
@@ -43,7 +43,7 @@
             fab:fab_colorPressed="@color/white_pressed" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/action_b"
+            android:id="@+id/write"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_fab_edit_final"

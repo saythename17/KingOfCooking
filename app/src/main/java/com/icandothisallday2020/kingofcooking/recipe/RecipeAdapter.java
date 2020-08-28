@@ -66,8 +66,10 @@ public class RecipeAdapter extends RecyclerView.Adapter {
                 public void onClick(View v) {
                     RecipeItem item= items.get(getLayoutPosition());
                     Intent intent=new Intent(context, RecipeDetail.class);
-                    intent.putExtra("title",item.name);
-                    intent.putExtra("img",item.image);
+                    intent.putExtra("title",item.title);
+                    intent.putExtra("image",item.image);
+                    intent.putExtra("id",item.id);
+                    intent.putExtra("ingredient",item.ingredient);
 
                     if(Build.VERSION.SDK_INT<21) context.startActivity(intent);
                     else{

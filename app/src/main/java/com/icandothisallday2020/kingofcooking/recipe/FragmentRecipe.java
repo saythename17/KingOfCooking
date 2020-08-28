@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,6 +34,7 @@ public class FragmentRecipe extends Fragment {
 
         View view=inflater.inflate(R.layout.fragment_recipe,container,false);
         adapter=new RecipeAdapter(getContext(),items);
+
         recyclerView=view.findViewById(R.id.home_recycler);
         recyclerView.setAdapter(adapter);
 
@@ -43,7 +45,7 @@ public class FragmentRecipe extends Fragment {
             public void run() {
                 try {
                     Log.i("food","a");
-                    URL url = new URL("http://openapi.foodsafetykorea.go.kr/api/22c9f42a31d249ce8ab5/COOKRCP01/xml/1/18");
+                    URL url = new URL("http://openapi.foodsafetykorea.go.kr/api/22c9f42a31d249ce8ab5/COOKRCP01/xml/1/100");
                     InputStream inputStream=url.openStream();
                     InputStreamReader reader=new InputStreamReader(inputStream);
 
@@ -64,6 +66,8 @@ public class FragmentRecipe extends Fragment {
                                 String tag_name=xpp.getName();
                                 if(tag_name.equals("row") ) {
                                     item= new RecipeItem();
+                                    item.id=Integer.parseInt(xpp.getAttributeValue(0));
+                                    Log.i("recipe",""+item.id);
                                 }else if(tag_name.equals("RCP_NM")){
                                     xpp.next();
                                     item.title=xpp.getText();
@@ -73,6 +77,9 @@ public class FragmentRecipe extends Fragment {
                                 }else if(tag_name.equals("ATT_FILE_NO_MAIN")){
                                     xpp.next();
                                     item.image=xpp.getText();
+                                }else if(tag_name.equals("RCP_PARTS_DTLS")){
+                                    xpp.next();
+                                    item.ingredient=xpp.getText();
                                 }break;
                             case XmlPullParser.END_TAG:
                                 String end_name=xpp.getName();

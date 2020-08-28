@@ -30,7 +30,7 @@ public class FragmentMy extends Fragment {
     ArrayList<WriteItem> items=new ArrayList<>();
     RecyclerView recyclerView;
     WriteAdapter adapter;
-    FloatingActionButton fab;
+    com.getbase.floatingactionbutton.FloatingActionButton fab_write;
     /////////////////////////////////////////////
 
     @Nullable
@@ -40,14 +40,15 @@ public class FragmentMy extends Fragment {
         recyclerView=view.findViewById(R.id.recycler_home);
         adapter=new WriteAdapter(getContext(),items);
         recyclerView.setAdapter(adapter);
-//        fab=view.findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent=new Intent(getContext(), WriteActivity.class);
-//                startActivityForResult(intent,112);
-//            }
-//        });
+        fab_write=view.findViewById(R.id.write);
+        fab_write.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(), WriteActivity.class);
+                startActivityForResult(intent,112);
+            }
+        });
+
         return  view;
     }
 
