@@ -73,8 +73,8 @@ public class RecipeDetail extends AppCompatActivity {
         String fullManuals_Img=intent.getStringExtra("manual_img");
         Log.i("full",""+fullManuals_Img);
         String[] arrManuals_img=fullManuals_Img.split("#@#");
-        for(int i=0; i<arrManuals.length;i++){
-            manualItems.add(new ManualItem(arrManuals[i],arrManuals_img[i]));
+        for(int i=0; i<arrManuals.length-2;i++){
+            manualItems.add(new ManualItem(arrManuals,arrManuals_img));
             i++;
         }
         mAdatper=new MAdatper(this,manualItems);

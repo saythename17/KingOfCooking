@@ -38,9 +38,9 @@ public class MAdatper extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         VH vh=(VH)holder;
-        vh.text.setText(items.get(position).manual);
+        vh.text.setText(items.get(position).manual[1]);
         if(items.get(position).manual_img!=null)
-        Glide.with(context).load(items.get(position).manual_img).into(vh.img);
+        Glide.with(context).load(items.get(position).manual_img[1]).into(vh.img);
         else vh.img.setMaxHeight(0);
     }
 
