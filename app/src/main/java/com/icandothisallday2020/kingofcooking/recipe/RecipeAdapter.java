@@ -5,6 +5,7 @@ import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,7 +45,7 @@ public class RecipeAdapter extends RecyclerView.Adapter {
         RecipeItem item=items.get(position);
         vh.title.setText(item.title);
         vh.name.setText(item.name);
-        Glide.with(context).load(item.image).into(vh.image);
+//        Glide.with(context).load(item.image).into(vh.image);
     }
 
     @Override
@@ -70,6 +71,9 @@ public class RecipeAdapter extends RecyclerView.Adapter {
                     intent.putExtra("image",item.image);
                     intent.putExtra("id",item.id);
                     intent.putExtra("ingredient",item.ingredient);
+                    intent.putExtra("manual",item.manual);
+                    intent.putExtra("manual_img",item.manual_img);
+                    Log.i("what",""+item.manual_img);
 
                     if(Build.VERSION.SDK_INT<21) context.startActivity(intent);
                     else{

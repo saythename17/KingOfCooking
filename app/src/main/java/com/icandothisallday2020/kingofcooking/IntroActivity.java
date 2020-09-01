@@ -8,11 +8,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
+import com.icandothisallday2020.kingofcooking.main.MainActivity;
+
 public class IntroActivity extends AppCompatActivity {
     Handler handler=new Handler(){
         @Override
         public void handleMessage(@NonNull Message msg) {
-            Intent intent=new Intent(IntroActivity.this,MainActivity.class);
+            Intent intent=new Intent(IntroActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
         }

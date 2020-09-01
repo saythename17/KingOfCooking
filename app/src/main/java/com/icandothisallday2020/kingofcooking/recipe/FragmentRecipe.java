@@ -44,7 +44,6 @@ public class FragmentRecipe extends Fragment {
             @Override
             public void run() {
                 try {
-                    Log.i("food","a");
                     URL url = new URL("http://openapi.foodsafetykorea.go.kr/api/22c9f42a31d249ce8ab5/COOKRCP01/xml/1/100");
                     InputStream inputStream=url.openStream();
                     InputStreamReader reader=new InputStreamReader(inputStream);
@@ -56,7 +55,6 @@ public class FragmentRecipe extends Fragment {
 
                     RecipeItem item=null;
                     while (eventType!=XmlPullParser.END_DOCUMENT){
-                        Log.i("food","b");
 
 
 
@@ -64,10 +62,11 @@ public class FragmentRecipe extends Fragment {
                         switch (eventType){
                             case XmlPullParser.START_TAG:
                                 String tag_name=xpp.getName();
+
+
                                 if(tag_name.equals("row") ) {
                                     item= new RecipeItem();
                                     item.id=Integer.parseInt(xpp.getAttributeValue(0));
-                                    Log.i("recipe",""+item.id);
                                 }else if(tag_name.equals("RCP_NM")){
                                     xpp.next();
                                     item.title=xpp.getText();
@@ -77,10 +76,21 @@ public class FragmentRecipe extends Fragment {
                                 }else if(tag_name.equals("ATT_FILE_NO_MAIN")){
                                     xpp.next();
                                     item.image=xpp.getText();
+                                }else if(tag_name.contains("MANUAL") && !(tag_name.contains("IMG"))){
+                                    xpp.next();
+                                    item.manual+="#@#"+xpp.getText();
+                                    Log.i("manual",""+xpp.getText());
+                                }else if(tag_name.contains("MANUAL_IMG")){
+                                    xpp.next();
+                                    if(xpp.getText()!=null && xpp.getText()!="\n"){
+                                        item.manual_img+="#@#"+xpp.getText();
+                                        Log.i("manualimg","img-real"+xpp.getText());
+                                    }
                                 }else if(tag_name.equals("RCP_PARTS_DTLS")){
                                     xpp.next();
                                     item.ingredient=xpp.getText();
-                                }break;
+                                }
+                                 break;
                             case XmlPullParser.END_TAG:
                                 String end_name=xpp.getName();
                                 if(end_name.equals("row")){
@@ -93,6 +103,7 @@ public class FragmentRecipe extends Fragment {
                                     });
                                 }
                                 break;
+
                         }//switch
                         eventType=xpp.next();
                     }//while
@@ -102,7 +113,7 @@ public class FragmentRecipe extends Fragment {
 
 
                 } catch (Exception e) {
-                    Log.i("food",""+e.getMessage());
+                    Log.i("food","error:"+e.getMessage());
                     e.printStackTrace();
                 }
             }

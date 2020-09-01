@@ -1,10 +1,12 @@
-package com.icandothisallday2020.kingofcooking;
+package com.icandothisallday2020.kingofcooking.main;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.icandothisallday2020.kingofcooking.FragmentFind;
+import com.icandothisallday2020.kingofcooking.FragmentHome;
 import com.icandothisallday2020.kingofcooking.my.FragmentMy;
 import com.icandothisallday2020.kingofcooking.recipe.FragmentRecipe;
 

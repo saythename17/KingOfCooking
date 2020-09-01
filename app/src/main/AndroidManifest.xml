@@ -24,7 +24,7 @@
         </activity>
         <activity android:name=".recipe.RecipeDetail" android:theme="@style/RecipeDetail"/>
         <activity
-            android:name=".MainActivity"
+            android:name=".main.MainActivity"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme" />
 

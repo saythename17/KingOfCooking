@@ -15,6 +15,8 @@ import android.os.IBinder;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
+import com.icandothisallday2020.kingofcooking.main.MainActivity;
+
 
 public class MusicService extends Service {
     MediaPlayer mp;
@@ -29,7 +31,7 @@ public class MusicService extends Service {
             builder.setSmallIcon(R.drawable.ic_music_note_skyblue);
             builder.setContentTitle("요리왕 BGM");
             builder.setContentText("Playing BGM...");
-            Intent i=new Intent(this,MainActivity.class);
+            Intent i=new Intent(this, MainActivity.class);
             i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             PendingIntent pendingIntent=PendingIntent.getActivity(this,17,i,PendingIntent.FLAG_UPDATE_CURRENT);
             builder.setContentIntent(pendingIntent);
@@ -67,7 +69,7 @@ public class MusicService extends Service {
 
         return null;
     }
-    class MyBinder extends Binder{
+    public class MyBinder extends Binder{
         public MusicService getService(){return  MusicService.this;}
 
     }

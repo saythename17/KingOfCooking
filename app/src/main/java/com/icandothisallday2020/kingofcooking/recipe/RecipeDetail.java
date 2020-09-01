@@ -34,6 +34,9 @@ public class RecipeDetail extends AppCompatActivity {
     ArrayList<String> ingredients=new ArrayList<>();
     IAdapter iAdapter;
 
+    ArrayList<ManualItem> manualItems=new ArrayList<>();
+    MAdatper mAdatper;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,55 +68,17 @@ public class RecipeDetail extends AppCompatActivity {
         iAdapter= new IAdapter(this,ingredients);
         iList.setAdapter(iAdapter);
 
-        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) image.setTransitionName("IMG");
-        int id=intent.getIntExtra("id",1);
-        new Thread(){
-            @Override
-            public void run() {
-                try {
-                    Log.i("food","a");
-                    URL url = new URL("http://openapi.foodsafetykorea.go.kr/api/22c9f42a31d249ce8ab5/COOKRCP01/xml/1/100");
-                    InputStream inputStream=url.openStream();
-                    InputStreamReader reader=new InputStreamReader(inputStream);
-
-                    XmlPullParserFactory factory=XmlPullParserFactory.newInstance();
-                    XmlPullParser xpp=factory.newPullParser();
-                    xpp.setInput(reader);
-                    int eventType=xpp.next();
-
-                    while (eventType!=XmlPullParser.END_DOCUMENT){
-                        //TODO ingredient & manual list parsing
-
-
-
-                        switch (eventType){
-                            case XmlPullParser.START_TAG:
-                                String tag_name=xpp.getName();
-                                if(tag_name.equals("row") ) {
-                                    int rowid=Integer.parseInt(xpp.getAttributeValue(0));
-                                }else if(tag_name.equals("RCP_NM")){
-                                }else if(tag_name.equals("RCP_PAT2")){
-                                }else if(tag_name.equals("ATT_FILE_NO_MAIN")){
-                                }break;
-                            case XmlPullParser.END_TAG:
-                                String end_name=xpp.getName();
-                                if(end_name.equals("row")){
-                                }
-                                break;
-                        }//switch
-
-
-
-                        eventType=xpp.next();
-
-                    }//while
-
-                } catch (Exception e) {
-                    Log.i("food",""+e.getMessage());
-                    e.printStackTrace();
-                }
-            }
-        }.start();
+        String fullManuals=intent.getStringExtra("manual");
+        String[] arrManuals=fullManuals.split("#@#");
+        String fullManuals_Img=intent.getStringExtra("manual_img");
+        Log.i("full",""+fullManuals_Img);
+        String[] arrManuals_img=fullManuals_Img.split("#@#");
+        for(int i=0; i<arrManuals.length;i++){
+            manualItems.add(new ManualItem(arrManuals[i],arrManuals_img[i]));
+            i++;
+        }
+        mAdatper=new MAdatper(this,manualItems);
+        mList.setAdapter(mAdatper);
 
     }
 

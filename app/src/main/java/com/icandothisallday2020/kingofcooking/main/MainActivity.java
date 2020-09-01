@@ -1,4 +1,4 @@
-package com.icandothisallday2020.kingofcooking;
+package com.icandothisallday2020.kingofcooking.main;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,6 +22,8 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.icandothisallday2020.kingofcooking.MusicService;
+import com.icandothisallday2020.kingofcooking.R;
 
 public class MainActivity extends AppCompatActivity {
     DrawerLayout drawer;
