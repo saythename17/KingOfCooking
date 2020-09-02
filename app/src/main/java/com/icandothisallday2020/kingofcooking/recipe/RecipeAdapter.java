@@ -45,7 +45,7 @@ public class RecipeAdapter extends RecyclerView.Adapter {
         RecipeItem item=items.get(position);
         vh.title.setText(item.title);
         vh.name.setText(item.name);
-//        Glide.with(context).load(item.image).into(vh.image);
+        Glide.with(context).load(item.image).into(vh.image);
     }
 
     @Override

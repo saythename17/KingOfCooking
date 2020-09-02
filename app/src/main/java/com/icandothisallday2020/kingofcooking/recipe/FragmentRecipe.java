@@ -66,6 +66,8 @@ public class FragmentRecipe extends Fragment {
 
                                 if(tag_name.equals("row") ) {
                                     item= new RecipeItem();
+                                    item.manual_img="";
+                                    item.manual="";
                                     item.id=Integer.parseInt(xpp.getAttributeValue(0));
                                 }else if(tag_name.equals("RCP_NM")){
                                     xpp.next();
@@ -73,7 +75,7 @@ public class FragmentRecipe extends Fragment {
                                 }else if(tag_name.equals("RCP_PAT2")){
                                     xpp.next();
                                     item.name=xpp.getText();
-                                }else if(tag_name.equals("ATT_FILE_NO_MAIN")){
+                                }else if(tag_name.equals("ATT_FILE_NO_MK")){
                                     xpp.next();
                                     item.image=xpp.getText();
                                 }else if(tag_name.contains("MANUAL") && !(tag_name.contains("IMG"))){

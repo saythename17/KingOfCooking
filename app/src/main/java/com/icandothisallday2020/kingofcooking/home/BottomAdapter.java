@@ -15,11 +15,11 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class PageAdapter1 extends PagerAdapter {
+public class BottomAdapter extends PagerAdapter {
     ArrayList<Integer> items;
     LayoutInflater inflater;
 
-    public PageAdapter1(ArrayList<Integer> items, LayoutInflater inflater) {
+    public BottomAdapter(ArrayList<Integer> items, LayoutInflater inflater) {
         this.items = items;
         this.inflater = inflater;
     }

@@ -5,28 +5,182 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/pager"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/home_nested"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-
-    <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
-        android:id="@+id/dots_indicator"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:dotsColor="#55636363"
-        app:dotsCornerRadius="8dp"
-        app:dotsSize="16dp"
-        app:dotsSpacing="4dp"
-        app:dotsWidthFactor="2.5"
-        app:selectedDotColor="#AAFFFFFF"
-        app:progressMode="true"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        tools:ignore="MissingConstraints" />
+        android:fillViewport="true">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/pager"
+                android:src="@drawable/home_recommand"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:scaleType="centerCrop"/>
+            <ImageView
+                android:src="@drawable/backgrougnd_dark_gradient"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:scaleType="centerCrop"/>
+            <TextView
+                android:id="@+id/recommand_title"
+                app:layout_constraintBottom_toBottomOf="@id/pager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="16dp"
+                android:paddingBottom="8dp"
+                android:text="나폴리탄 스파게티"
+                android:textColor="@android:color/white"
+                android:textSize="32dp"
+                android:fontFamily="@font/cafe24oneprettynight"/>
+            <TextView
+                android:id="@+id/recommand_sub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/cafe24oneprettynight"
+                app:layout_constraintBottom_toTopOf="@id/recommand_title"
+                android:text="달큰한 토마토향"
+                android:textSize="16dp"
+                android:paddingHorizontal="16dp"/>
+
+            <TextView
+                android:id="@+id/title_shop"
+                app:layout_constraintTop_toBottomOf="@id/recommand_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="40dp"
+                android:text="| King's Choice |"
+                android:textSize="24dp"
+                android:textColor="@color/colorText"
+                android:layout_marginVertical="8dp"
+                android:fontFamily="@font/bold"/>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/home_shop"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_marginVertical="16dp"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal"
+                android:paddingVertical="4dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/title_shop"
+                tools:layout_editor_absoluteX="0dp" />
+
+            <Button
+                android:id="@+id/moreBtn"
+                android:layout_margin="16dp"
+                app:layout_constraintTop_toBottomOf="@id/home_shop"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="더보기 >"
+                android:textSize="20dp"
+                android:paddingHorizontal="16dp"
+                android:textColor="@color/colorText"
+                android:background="@drawable/more_btn"
+                android:layout_marginVertical="8dp"
+                android:fontFamily="@font/bold"/>
+
+
+            <TextView
+                android:id="@+id/title_chart"
+                app:layout_constraintTop_toBottomOf="@id/moreBtn"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="80dp"
+                android:text="| Best Recipe |"
+                android:textSize="24dp"
+                android:textColor="@color/colorText"
+                android:layout_marginVertical="8dp"
+                android:fontFamily="@font/bold"/>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/home_chart"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/title_chart"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="80dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/moreBtn2"
+                android:layout_margin="16dp"
+                app:layout_constraintTop_toBottomOf="@id/home_chart"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="더보기 >"
+                android:textSize="20dp"
+                android:paddingHorizontal="16dp"
+                android:textColor="@color/colorText"
+                android:background="@drawable/more_btn"
+                android:layout_marginVertical="8dp"
+                android:fontFamily="@font/bold"/>
+
+
+
+            <com.google.android.gms.ads.AdView
+                ads:layout_constraintTop_toBottomOf="@id/moreBtn2"
+                xmlns:ads="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/adView"
+                android:layout_marginTop="80dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                ads:adSize="BANNER"
+                ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+<!--             change adUnitId :    ca-app-pub-2102574529234286/8633099149-->
+<!--                banner Test Id :  ca-app-pub-3940256099942544/6300978111-->
+            </com.google.android.gms.ads.AdView>
+
+
+
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/pager2"
+                app:layout_constraintTop_toBottomOf="@id/home_chart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+
+            <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+                android:id="@+id/dots_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@id/pager"
+                app:dotsColor="#D97A7878"
+                app:dotsCornerRadius="6dp"
+                app:dotsSize="12dp"
+                app:dotsSpacing="4dp"
+                app:dotsWidthFactor="2.0"
+                app:selectedDotColor="#C1FFFFFF"
+                app:progressMode="true"
+                android:layout_margin="16dp"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:ignore="MissingConstraints" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

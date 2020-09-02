@@ -21,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.icandothisallday2020.kingofcooking.MusicService;
 import com.icandothisallday2020.kingofcooking.R;
